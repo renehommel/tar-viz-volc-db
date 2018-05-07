@@ -1,0 +1,245 @@
+Volcano,Lon,Lat,Time Eruption,Max Plume Height km,SO2 kt
+Nyamuragira,30,-1,23 Jul 2002,15,23
+Witori,150,-6,2 Aug 2002,14,18
+Ruang,125,2,26 Sep 2002,18,71
+El Reventador,-78,0,5 Nov 2002,17,77
+Nyiragongo,30,-1,9 Jan 2003,15,20
+Lokon,125,1,9 Jan 2003,16,17
+Nyiragongo,30,-1,5 Mar 2003,17,17
+Lokon,125,1,5 Mar 2003,15,19
+Anatahan,143,16,14 May 2003,16,13
+Nyiragongo,30,-1,14 May 2003,16,21
+Ulawun,150,-5,14 May 2003,17,9
+Lewotobi,123,-8,13 Jun 2003,15,13
+Kanlaon,123,10,13 Jun 2003,15,21
+Soufriere Hills,-62,16,13 Jul 2003,18,59
+Gamalama,128,1,17 Aug 2003,16,15
+Japan,131,33,17 Aug 2003,16,13
+Bezymianny/Klyuchev.,160,56,6 Sep 2003,14,8
+Lokon,125,2,26 Sep 2003,16,12
+Soufriere Hills,-62,16,26 Sep 2003,16,9
+Rabaul,150,-5,10 Nov 2003,16,24
+Rabaul,150,-5,5 Dec 2003,16,19
+Rabaul,150,-5,9 Jan 2004,17,15
+Nyiragongo,30,-1,9 Jan 2004,15,13
+Langila,150,-5,3 Feb 2004,17,16
+Nyiragongo,30,-1,3 Feb 2004,17,4
+Soufriere Hills,-62,16,4 Mar 2004,17,28
+Nyamuragira,29,-1,12 Jun 2004,17,25
+Awu,125,4,12 Jun 2004,15,22
+Tengger C.,110,-8,12 Jun 2004,15,22
+Pacaya,-91,15,17 Jul 2004,17,16
+Galeras,-77,1,17 Jul 2004,17,15
+Galeras,-77,1,11 Aug 2004,16,21
+Vanuatu,168,-16,30 Sep 2004,15,10
+Rinjani,116,-8,30 Sep 2004,15,21
+Kerinci,101,-2,30 Sep 2004,17,21
+Manam,144,-4,30 Oct 2004,16,11
+Soputan,125,1,30 Oct 2004,16,16
+Manam,144,-4,24 Nov 2004,17,22
+Nyiragongo,30,-1,24 Nov 2004,15,14
+Nyiragongo,30,-1,4 Dec 2004,16,31
+Reventador,-77,0,4 Dec 2004,16,8
+Vanuatu,168,-16,24 Dec 2004,17,22
+Soputan,125,1,24 Dec 2004,15,23
+Manam,144,-4,28 Jan 2005,18,144
+Anatahan,143,16,3 Apr 2005,15,21
+Anatahan,143,16,23 Apr 2005,16,30
+Soufriere Hills,-62,16,23 Apr 2005,16,30
+Anatahan,143,16,18 May 2005,15,11
+Fernadina,-91,0,18 May 2005,15,15
+Vanuatu,168,-16,18 May 2005,15,8
+Anatahan,143,16,12 Jun 2005,15,17
+Santa Ana,-90,14,12 Jun 2005,15,13
+Anatahan,143,16,12 Jul 2005,15,18
+Soufriere Hills,-62,16,12 Jul 2005,15,13
+Anatahan,143,16,6 Aug 2005,15,19
+Ruang,113,-8,6 Aug 2005,15,28
+Anatahan,143,16,16 Aug 2005,15,25
+Ruang,113,-8,16 Aug 2005,15,31
+Santa Ana,-90,14,5 Oct 2005,17,46
+Sierra Negra,-91,-1,25 Oct 2005,15,20
+Dabbahu,40,-13,25 Oct 2005,15,27
+Karthala,43,-10,24 Nov 2005,16,16
+Galeras,-77,1,24 Nov 2005,16,14
+Soputan,125,1,24 Dec 2005,16,33
+Lopevi,168,-16,24 Dec 2005,16,18
+Rabaul,152,-5,23 Jan 2006,16,31
+Manam,144,-5,4 Mar 2006,17,72
+Chile,-70,-40,4 Mar 2006,17,7
+Cleveland,-170,53,14 Mar 2006,13,8
+Ecuador,-78,-5,18 Apr 2006,17,16
+Tinakula,166,-10,18 Apr 2006,17,21
+Lascar,-68,-23,18 Apr 2006,17,3
+Soufriere Hills,-62,16,23 May 2006,19,156
+Kanlaon,123,10,2 Jul 2006,20,70
+Tungurahua,-78,-2,16 Aug 2006,19,44
+Rabaul,150,-4,16 Aug 2006,19,22
+Rabaul,150,-4,10 Oct 2006,17,172
+Ubinas,-71,-16,25 Oct 2006,17,14
+Vanuatu,168,-16,25 Oct 2006,15,41
+Ambrym,160,-10,9 Nov 2006,17,45
+Nyamuragira,29,-1,29 Nov 2006,17,40
+Mexico,-90,5,29 Nov 2006,15,30
+Bulusan,125,13,24 Dec 2006,18,10
+Soputan,125,1,24 Dec 2006,16,10
+Vanuatu,168,-16,24 Dec 2006,15,18
+Karthala,43,-10,23 Jan 2007,17,6
+Bulusan,125,13,23 Jan 2007,17,5
+Lascar,-68,-23,23 Jan 2007,15,7
+Shiveluch,160,57,23 Jan 2007,15,8
+Vanuatu,168,-16,23 Jan 2007,15,6
+Nev. d Huila,-70,0,22 Feb 2007,16,11
+Karthala,43,-10,22 Feb 2007,15,14
+Vanuatu,168,-16,22 Feb 2007,16,11
+Etna,15,38,24 Mar 2007,15,11
+Reventador,-78,0,24 Mar 2007,16,24
+Ambrym,160,-16,24 Mar 2007,17,20
+Pit. Fourn. Reunion,57,-20,8 Apr 2007,16,31
+Reventador,-80,0,8 Apr 2007,16,15
+Ulawun,150,-5,3 May 2007,15,15
+Vanuatu,160,-25,3 May 2007,15,7
+N.d.Huila,-70,3,3 May 2007,15,9
+Papua,150,-10,13 May 2007,16,8
+Kamchatka,150,50,13 May 2007,16,1
+Nyiragongo,30,-1,13 May 2007,16,13
+Ubinas,-71,-16,13 May 2007,16,8
+Lascar,-68,-23,13 May 2007,16,8
+Llaima,-70,-30,23 May 2007,18,14
+Vanuatu,160,-15,23 May 2007,15,8
+Bulusan,125,13,23 May 2007,17,10
+Soputan,125,1,12 Jun 2007,16,19
+Bezymianny,160,56,12 Jun 2007,14,10
+Telica,-87,13,12 Jun 2007,15,13
+Lengai,29,2,2 Jul 2007,16,17
+Mexico,-90,20,2 Jul 2007,15,11
+Raung,110,-5,27 Jul 2007,15,14
+Japan,130,35,27 Jul 2007,15,14
+Manda Hararo,40,12,11 Aug 2007,17,21
+Java,115,-5,11 Aug 2007,15,18
+Vanuatu,180,-15,20 Sep 2007,16,11
+Mexico,-90,20,20 Sep 2007,16,18
+Jebel al Tair,42,16,5 Oct 2007,16,68
+Galeras,-77,1,5 Oct 2007,16,13
+Galeras,-77,1,4 Nov 2007,16,10
+Jebel,42,15,4 Nov 2007,16,7
+Soputan,125,1,4 Nov 2007,16,12
+Soputan or Krakatau,110,-5,14 Nov 2007,16,13
+Galeras,-77,-1,14 Nov 2007,16,12
+Chikurachki,155,50,14 Nov 2007,15,45
+Talang,101,-1,9 Dec 2007,16,13
+Galeras,-77,1,9 Dec 2007,16,15
+Ulawun?,150,1,19 Dec 2007,17,29
+Nevado del Huila,-76,3,3 Jan 2008,17,32
+Llaima,-71,-35,3 Jan 2008,15,5
+Galeras,-77,1,23 Jan 2008,16,24
+Anatahan,145,15,23 Jan 2008,16,12
+Tungurahua,-78,-2,12 Feb 2008,16,19
+Papua,155,-5,12 Feb 2008,17,14
+TaraBatu,125,-5,13 Mar 2008,16,33
+Lengai,36,-5,28 Mar 2008,16,10
+Andes,-80,5,28 Mar 2008,16,7
+Kerinci,101,-2,28 Mar 2008,16,11
+Egon,122,-5,12 Apr 2008,15,20
+Nev.d.Huila,-76,3,12 Apr 2008,17,13
+Mexico,-90,15,27 Apr 2008,16,13
+Ibu,127,1,27 Apr 2008,16,15
+Chaiten,-73,-43,27 Apr 2008,16,4
+Mexico,-90,10,12 May 2008,16,13
+Barren Island,94,12,12 May 2008,14,18
+Chaiten,-73,-43,12 May 2008,14,6
+Soputan,125,1,16 Jun 2008,16,32
+Nicaragua/C.R.,-85,15,16 Jun 2008,16,10
+Okmok,-168,53,21 Jul 2008,16,57
+Soputan,125,1,21 Jul 2008,16,30
+Kasatochi,-175,52,15 Aug 2008,18,390
+Dallafilla,40,14,13 Nov 2008,17,55
+Nev. d. Huila,-76,3,13 Nov 2008,17,40
+Karangetang,125,3,18 Dec 2008,17,19
+Galeras,-77,1,18 Dec 2008,17,3
+Japan,130,30,18 Dec 2008,15,11
+Barren Island,94,12,2 Jan 2009,17,16
+Galeras,-77,1,2 Jan 2009,15,16
+Indonesia?,100,-5,27 Jan 2009,16,15
+Galeras,-77,1,27 Jan 2009,16,13
+Galeras,-77,1,16 Feb 2009,16,12
+Villarrica,-75,-35,16 Feb 2009,15,7
+Karangetang,100,3,16 Feb 2009,16,7
+Vanuatu,168,-16,16 Feb 2009,17,8
+Redoubt,-155,60,28 Mar 2009,13,61
+Galeras,-77,1,28 Mar 2009,15,43
+Fernandina,-90,0,12 Apr 2009,16,12
+Nyiragongo,30,-1,12 Apr 2009,16,16
+Galeras+Reventador,-75,0,7 May 2009,15,31
+Rinjani,116,-5,22 May 2009,16,5
+Vanuatu,165,-15,22 May 2009,16,6
+Revent.,-80,3,22 May 2009,16,18
+Sarychev,153,48,21 Jun 2009,16,496
+Manda Hararo,40,12,21 Jun 2009,16,91
+Vanuatu,165,-15,4 Oct 2009,17,6
+Mayon,120,13,4 Oct 2009,17,9
+Galeras,-77,1,4 Oct 2009,17,14
+Tungurahua,-78,-2,19 Oct 2009,16,11
+Hawaii,-155,20,19 Oct 2009,16,8
+Vanuatu,165,-16,19 Oct 2009,16,9
+Galeras,-77,1,3 Dec 2009,17,15
+Karkar,146,-5,3 Dec 2009,17,12
+Vanuatu,165,-16,3 Dec 2009,17,5
+Mayon,120,13,2 Jan 2010,16,12
+Nyamuragira,29,-1,2 Jan 2010,16,12
+Vanuatu,168,-15,2 Jan 2010,16,13
+Turrialba,-82,5,17 Jan 2010,16,15
+Vanuatu,168,-15,17 Jan 2010,16,15
+Soufriere Hills +,-62,16,16 Feb 2010,18,45
+Arenal,-84,9,2 Apr 2010,15,18
+Indonesia,120,0,2 Apr 2010,15,15
+Vanuatu,168,-16,2 Apr 2010,15,6
+Tungurahua,-78,-2,2 May 2010,16,20
+Dukono,128,2,2 May 2010,16,14
+Vanuatu,168,-16,2 May 2010,16,10
+Pacaya,-91,15,6 Jun 2010,17,38
+Ulawun,150,-5,6 Jun 2010,16,8
+Sarigan,145,16,6 Jun 2010,15,6
+Ulawun,150,-5,16 Jul 2010,16,11
+Costa Rica,-87,15,16 Jul 2010,16,18
+Miyakejima,140,35,16 Jul 2010,16,8
+Karangetang,125,3,15 Aug 2010,16,17
+Nicaragua,-85,15,15 Aug 2010,16,17
+Vanuatu,168,16,15 Aug 2010,16,9
+Galeras,-77,1,30 Aug 2010,16,16
+Sinabung M,98,3,30 Aug 2010,16,20
+Karangetang ?,125,3,4 Oct 2010,16,28
+Barren Island,94,12,4 Oct 2010,16,19
+Merapi,110,-7,8 Nov 2010,17,108
+Tengger C.,110,-8,23 Dec 2010,17,23
+Tungurahua,-78,-2,23 Dec 2010,17,19
+Chile,-75,-40,23 Dec 2010,17,12
+Tengger C.,110,-8,7 Jan 2011,16,40
+Lokon-Empung,125,1,26 Feb 2011,16,19
+Planchon,-75,-35,26 Feb 2011,15,5
+Bulusan,125,13,26 Feb 2011,16,17
+Karangetang,125,2,23 Mar 2011,15,12
+Sangay,-78,-2,23 Mar 2011,15,12
+Planchon,-75,-35,23 Mar 2011,15,6
+Galeras ?,-77,1,12 Apr 2011,16,14
+Karangetang,128,5,12 Apr 2011,16,13
+Tungurahua,-78,-2,2 May 2011,16,18
+Dukono,128,2,2 May 2011,16,13
+Vanuatu,160,-16,2 May 2011,15,7
+Grimsvötn,-20,65,27 May 2011,14,20
+Lokon,125,1,27 May 2011,16,30
+Puyehue,-71,-41,11 Jun 2011,13,23
+Nabro,41,13,21 Jun 2011,19,446
+Soputan,125,1,20 Aug 2011,18,15
+Marapi,100,0,20 Aug 2011,16,5
+Manam,144,-4,19 Oct 2011,16,14
+Tungurahua,-78,-2,19 Oct 2011,16,14
+Nyamuragira,29,-1,18 Nov 2011,16,39
+Gamalama,128,1,18 Dec 2011,16,27
+Nyamuragira,29,-1,18 Dec 2011,15,19
+Vanuatu,168,-16,12 Jan 2012,16,20
+Nyamuragira,29,-1,12 Jan 2012,14,17
+Vanuatu,168,-16,11 Feb 2012,17,23
+Nyamuragira,29,-1,11 Feb 2012,17,22
+N.Ruiz,-76,-3,12 Mar 2012,16,17
+Marapi,100,0,12 Mar 2012,17,21

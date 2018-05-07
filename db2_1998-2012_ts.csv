@@ -1,0 +1,158 @@
+Volcano,Lon,Lat,Time Eruption,Max Plume Height km,SO2 kt
+Shishaldin,196.03,54.76,13 Mar 1999,13.7,60
+Tungurahua,281.56,-1.47,16 Nov 1999,8.0,10
+Hekla,340.30,63.98,26 Feb 2000,12.0,200
+Miyake-jima,139.53,34.08,27 Jun 2000,2.0,270
+Ulawun,151.33,-5.05,28 Sep 2000,15.0,50
+Ulawun,151.33,-5.05,16 Jan 2001,14.0,30
+Cleveland,190.06,52.83,2 Feb 2001,11.0,4
+Ruang,125.37,2.30,25 Sep 2002,20.0,60
+Reventador,282.34,-0.08,3 Nov 2002,16.8,100
+Anatahan,145.67,16.35,10 May 2003,15.0,70
+Soufrière Hills,297.82,16.72,12 Jul 2003,15.0,140
+Manam,145.04,-4.08,27 Jan 2005,19.0,180
+Anatahan,145.67,16.35,12 Apr 2005,10.0,70
+Sierra Negra,268.83,-0.83,22 Oct 2005,15.0,360
+Manam,145.04,-4.08,27 Feb 2006,12.0,80
+Soufrière Hills,297.82,16.72,19 May 2006,20.0,200
+Tungurahua,281.56,-1.47,14 Jul 2006,16.0,10
+Tungurahua,281.56,-1.47,16 Aug 2006,16.0,40
+Rabaul (Tavurvur),152.20,-4.27,7 Oct 2006,18.0,230
+Nyamuragira,29.20,-1.41,28 Nov 2006,9.0,200
+Nyamuragira,29.20,-1.41,29 Nov 2006,8.0,470
+Nyamuragira,29.20,-1.41,30 Nov 2006,8.0,680
+Nyamuragira,29.20,-1.41,01 Dec 2006,8.0,690
+Nyamuragira,29.20,-1.41,02 Dec 2006,8.0,610
+Piton de la Fournaise,55.71,-21.24,04 Apr 2007,9.0,50
+Jebel at Tair,41.83,15.55,30 Sep 2007,16.0,80
+Llaima,288.27,-38.69,01 Jan 2008,12.5,30
+Cerro Azul (Galápagos),269.00,-0.92,01 May 2008,3.0,30
+Cerro Azul (Galápagos),269.00,-0.92,02 May 2008,3.0,4
+Chaitén,287.35,-42.83,02 May 2008,21.0,10
+Cerro Azul (Galápagos),269.00,-0.92,03 May 2008,3.0,2
+Cerro Azul (Galápagos),269.00,-0.92,04 May 2008,3.0,3
+Cerro Azul (Galápagos),269.00,-0.92,05 May 2008,3.0,20
+Cerro Azul (Galápagos),269.00,-0.92,06 May 2008,3.0,20
+Cerro Azul (Galápagos),269.00,-0.92,07 May 2008,3.0,20
+Cerro Azul (Galápagos),269.00,-0.92,08 May 2008,3.0,20
+Cerro Azul (Galápagos),269.00,-0.92,09 May 2008,3.0,10
+Cerro Azul (Galápagos),269.00,-0.92,10 May 2008,3.0,10
+Cerro Azul (Galápagos),269.00,-0.92,30 May 2008,3.0,10
+Cerro Azul (Galápagos),269.00,-0.92,31 May 2008,3.0,40
+Okmok,191.87,53.43,12 Jul 2008,16.0,120
+Kasatochi,184.49,52.18,8 Aug 2008,18.0,1700
+Redoubt,207.26,60.49,23 Mar 2009,18.9,70
+Redoubt,207.26,60.49,24 Mar 2009,10.0,80
+Redoubt,207.26,60.49,26 Mar 2009,4.0,30
+Redoubt,207.26,60.49,27 Mar 2009,9.0,20
+Redoubt,207.26,60.49,28 Mar 2009,8.0,80
+Redoubt,207.26,60.49,01 Apr 2009,7.0,20
+Redoubt,207.26,60.49,04 Apr 2009,3.8,30
+Redoubt,207.26,60.49,09 Apr 2009,7.0,10
+Redoubt,207.26,60.49,12 Apr 2009,8.0,10
+Redoubt,207.26,60.49,13 Apr 2009,6.0,10
+Redoubt,207.26,60.49,24 Apr 2009,6.0,10
+Sarychev Peak,153.20,48.09,15 Jun 2009,15.0,600
+Sarychev Peak,153.20,48.09,16 Jun 2009,15.0,600
+Soufrière Hills,297.82,16.72,11 Feb 2010,15.0,30
+Eyjafjallajökull,340.38,63.63,14 Apr 2010,9.5,60
+Eyjafjallajökull,340.38,63.63,15 Apr 2010,6.5,30
+Eyjafjallajökull,340.38,63.63,16 Apr 2010,9.2,40
+Eyjafjallajökull,340.38,63.63,17 Apr 2010,8.0,30
+Eyjafjallajökull,340.38,63.63,18 Apr 2010,4.5,10
+Eyjafjallajökull,340.38,63.63,19 Apr 2010,4.5,2.08
+Eyjafjallajökull,340.38,63.63,20 Apr 2010,4.0,0.4
+Eyjafjallajökull,340.38,63.63,21 Apr 2010,3.0,4.76
+Eyjafjallajökull,340.38,63.63,22 Apr 2010,4.5,10
+Eyjafjallajökull,340.38,63.63,23 Apr 2010,4.8,10
+Eyjafjallajökull,340.38,63.63,24 Apr 2010,3.7,10
+Eyjafjallajökull,340.38,63.63,25 Apr 2010,4.0,4.04
+Eyjafjallajökull,340.38,63.63,26 Apr 2010,4.8,10
+Eyjafjallajökull,340.38,63.63,27 Apr 2010,3.7,4.32
+Eyjafjallajökull,340.38,63.63,28 Apr 2010,4.0,10
+Eyjafjallajökull,340.38,63.63,29 Apr 2010,3.6,10
+Eyjafjallajökull,340.38,63.63,30 Apr 2010,5.1,4
+Eyjafjallajökull,340.38,63.63,01 May 2010,5.4,4
+Eyjafjallajökull,340.38,63.63,02 May 2010,5.4,4
+Eyjafjallajökull,340.38,63.63,03 May 2010,5.5,10
+Eyjafjallajökull,340.38,63.63,04 May 2010,6.0,10
+Eyjafjallajökull,340.38,63.63,05 May 2010,9.0,30
+Eyjafjallajökull,340.38,63.63,06 May 2010,6.8,10
+Eyjafjallajökull,340.38,63.63,07 May 2010,7.5,4
+Eyjafjallajökull,340.38,63.63,08 May 2010,5.5,3
+Eyjafjallajökull,340.38,63.63,09 May 2010,5.5,2
+Eyjafjallajökull,340.38,63.63,10 May 2010,5.5,2
+Eyjafjallajökull,340.38,63.63,11 May 2010,6.0,10
+Eyjafjallajökull,340.38,63.63,12 May 2010,5.5,3
+Eyjafjallajökull,340.38,63.63,13 May 2010,9.0,20
+Eyjafjallajökull,340.38,63.63,14 May 2010,7.0,20
+Eyjafjallajökull,340.38,63.63,15 May 2010,7.0,10
+Eyjafjallajökull,340.38,63.63,16 May 2010,8.0,20
+Eyjafjallajökull,340.38,63.63,17 May 2010,7.0,10
+Eyjafjallajökull,340.38,63.63,18 May 2010,6.0,3
+Eyjafjallajökull,340.38,63.63,19 May 2010,5.5,2
+Eyjafjallajökull,340.38,63.63,20 May 2010,4.0,1
+Eyjafjallajökull,340.38,63.63,21 May 2010,3.5,1
+Eyjafjallajökull,340.38,63.63,22 May 2010,2.9,0.01
+Merapi,110.44,-7.54,08 Nov 2010,15.2,440
+Sheveluch,161.36,56.65,12 Dec 2010,5.0,20
+Grímsvötn,342.67,64.42,21 May 2011,20.0,70
+Grímsvötn,342.67,64.42,22 May 2011,15.0,200
+Grímsvötn,342.67,64.42,23 May 2011,10.0,300
+Puyehue-Cordón Caulle,287.88,-40.59,04 Jun 2011,13.7,250
+Nabro,41.70,13.37,13 Jun 2011,17.0,1500
+Nabro,41.70,13.37,14 Jun 2011,7.8,510
+Nabro,41.70,13.37,15 Jun 2011,6.8,740
+Nabro,41.70,13.37,16 Jun 2011,9.2,570
+Nabro,41.70,13.37,17 Jun 2011,9.5,200
+Nabro,41.70,13.37,18 Jun 2011,6.7,200
+Nabro,41.70,13.37,19 Jun 2011,6.5,230
+Nabro,41.70,13.37,20 Jun 2011,5.2,240
+Nabro,41.70,13.37,21 Jun 2011,5.2,230
+Nabro,41.70,13.37,22 Jun 2011,5.7,160
+Nabro,41.70,13.37,23 Jun 2011,5.9,110
+Nabro,41.70,13.37,24 Jun 2011,6.2,10
+Nabro,41.70,13.37,25 Jun 2011,5.1,110
+Nabro,41.70,13.37,26 Jun 2011,4.6,130
+Nabro,41.70,13.37,27 Jun 2011,4.7,70
+Nabro,41.70,13.37,28 Jun 2011,6.0,70
+Nyamuragira,29.20,-1.41,06 Nov 2011,8.0,40
+Nyamuragira,29.20,-1.41,07 Nov 2011,8.0,70
+Nyamuragira,29.20,-1.41,08 Nov 2011,8.0,90
+Nyamuragira,29.20,-1.41,09 Nov 2011,6.0,110
+Nyamuragira,29.20,-1.41,10 Nov 2011,6.0,110
+Nyamuragira,29.20,-1.41,11 Nov 2011,6.0,100
+Nyamuragira,29.20,-1.41,12 Nov 2011,6.0,80
+Nyamuragira,29.20,-1.41,13 Nov 2011,6.0,60
+Nyamuragira,29.20,-1.41,14 Nov 2011,6.0,40
+Nyamuragira,29.20,-1.41,15 Nov 2011,6.0,30
+Nyamuragira,29.20,-1.41,16 Nov 2011,6.0,20
+Nyamuragira,29.20,-1.41,17 Nov 2011,6.0,20
+Nyamuragira,29.20,-1.41,18 Nov 2011,6.0,10
+Nyamuragira,29.20,-1.41,19 Nov 2011,6.0,10
+Nyamuragira,29.20,-1.41,20 Nov 2011,6.0,10
+Nyamuragira,29.20,-1.41,21 Nov 2011,6.0,10
+Nyamuragira,29.20,-1.41,22 Nov 2011,6.0,10
+Nyamuragira,29.20,-1.41,23 Nov 2011,6.0,10
+Nyamuragira,29.20,-1.41,24 Nov 2011,6.0,10
+Nyamuragira,29.20,-1.41,25 Nov 2011,6.0,10
+Nyamuragira,29.20,-1.41,26 Nov 2011,6.0,10
+Nyamuragira,29.20,-1.41,27 Nov 2011,6.0,10
+Nyamuragira,29.20,-1.41,28 Nov 2011,6.0,10
+Nyamuragira,29.20,-1.41,29 Nov 2011,6.0,10
+Nyamuragira,29.20,-1.41,30 Nov 2011,6.0,10
+Nyamuragira,29.20,-1.41,01 Dec 2011,6.0,10
+Nyamuragira,29.20,-1.41,02 Dec 2011,6.0,10
+Nyamuragira,29.20,-1.41,03 Dec 2011,6.0,10
+Nyamuragira,29.20,-1.41,04 Dec 2011,6.0,10
+Nyamuragira,29.20,-1.41,05 Dec 2011,6.0,10
+Nyamuragira,29.20,-1.41,06 Dec 2011,6.0,10
+Nyamuragira,29.20,-1.41,07 Dec 2011,6.0,10
+Nyamuragira,29.20,-1.41,08 Dec 2011,6.0,10
+Nyamuragira,29.20,-1.41,09 Dec 2011,6.0,10
+Nyamuragira,29.20,-1.41,10 Dec 2011,6.0,10
+Nyamuragira,29.20,-1.41,11 Dec 2011,6.0,10
+Nyamuragira,29.20,-1.41,12 Dec 2011,6.0,10
+Nyamuragira,29.20,-1.41,13 Dec 2011,6.0,10
+Soputan,124.73,1.11,18 Sep 2012,9.1,10
+Copahue,288.80,-37.86,22 Dec 2012,9.0,200
