@@ -706,7 +706,7 @@ const draw_ts = (volcano, thisYear, colors, allMax) => {
         // fit labels to 1st Jan tick marks:
         //return "translate(" + this.getBBox().height*-1 + "," + this.getBBox().height*1.4 + ")rotate(-45)";
         // fit labels to interval:
-        return "translate(" + this.getBBox().height*1.1 + "," + this.getBBox().height*1.2 + ")rotate(-45)";
+        return "translate(" + this.getBBox().height*1.3 + "," + this.getBBox().height*1.5 + ")rotate(-40)";
     });
 
 
@@ -940,7 +940,10 @@ function updateButtonColors(button, parent) {
 function updateOnOffButtonColors(button){
             var currentColor =button.select('rect').style("fill");
 
-            currentColor = currentColor == orange02 ? btn_defaultColor : orange02;
+            // if colors imported from css, the conditional statement does not work anymore
+            // workaround: set orange02 explicitely as rgb value (string/variable problem? cannot trace back)
+            //currentColor = currentColor == orange02 ? btn_defaultColor : orange02;
+            currentColor = currentColor == "rgb(231, 189, 114)" ? btn_defaultColor : orange02;
 
             const showAllYears = currentColor == orange02 ? 'on' : 'off';
 

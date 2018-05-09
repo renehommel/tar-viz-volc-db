@@ -211,7 +211,7 @@
     stroke: none;
     font-weight:100;
     font-size:11px;
-    letter-spacing:2px;
+    letter-spacing:1px;
 }
 #map-title{
     fill: var(--orange03);
