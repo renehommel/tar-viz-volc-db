@@ -2,16 +2,17 @@
     --sliderWidth:550;
     --sliderXPos:240;
     --sliderYPos:30;
-    --black000 : rgb(0, 0, 0);
-    --gray333  : rgb(51, 51, 51);
-    --grayccc  : rgb(204, 204, 204);
-    --gray111  : rgb(17, 17, 17);
-    --gray69   : rgb(105, 105, 105);   /* #696969 aka dimgray */
-    --brown01  : rgb(104, 90, 92);     /* #685a5c */
-    --orange01 : rgb(217, 137, 97);    /* #d98961 */
-    --orange02 : rgb(231, 189, 114);   /* #e7bd72 */
-/*    --orange03 : rgb(162, 113, 45);  */ /* #ECB362 */
-    --orange03 : rgb(157, 131, 96);   /* #ECB362 */
+    --svgPadBGColor:#111;
+    --black000 :rgb(0, 0, 0);       /* ensure to avoid blanks between ":" and "rgb..." (JS would run into problems)!! */
+    --gray333  :rgb(51, 51, 51);
+    --grayccc  :rgb(204, 204, 204);
+    --gray111  :rgb(17, 17, 17);
+    --gray69   :rgb(105, 105, 105);   /* #696969 aka dimgray */
+    --brown01  :rgb(104, 90, 92);     /* #685a5c */
+    --orange01 :rgb(217, 137, 97);    /* #d98961 */
+    --orange02 :rgb(231, 189, 114);   /* #e7bd72 */
+/*    --orange03 :rgb(162, 113, 45);  */ /* #ECB362 */
+    --orange03 :rgb(157, 131, 96);   /* #ECB362 */
 }
 .content-section-bright {
     padding: 50px 0;
@@ -62,7 +63,7 @@
 }
 
 .svg-pad {
-    background-color: #111;   /* #111 */
+    background-color: var(--svgPadBGColor);   /* #111 */
 }
 
 .copyright {
@@ -102,14 +103,15 @@
 .v4_slider_track-overlay {
     stroke-linecap: round;
 }
-.v4_slider_track{
-    stroke: red;
+.v4_slider_track {
+    stroke: #fff;
 /*    stroke-opacity: 0.3; */
-    stroke-width: 20px;
+    stroke-width: 4px;
 }
 .v4_slider_track-inset {
 /*    stroke: #ddd; */
-      stroke: var(--orange03);
+/*      stroke: var(--orange03);  */
+      stroke: var(--svgPadBGColor);
       stroke-width: 3px;
 }
 .v4_slider_track-overlay {
@@ -124,6 +126,7 @@
     stroke-opacity: 0.5;
     stroke-width: 1.25px;
 }
+/*
 .v4_slider_ticks {
     fill: var(--orange03);
     color: var(--orange03);
@@ -132,7 +135,7 @@
     fill: var(--orange03);
     color: var(--orange03);
 }
-
+*/
 
 
 

@@ -142,12 +142,16 @@ var uiObj = new Object(),
     str  = 'ui_settings',
     buttonsDBselection = 'state_DB_selection',
     buttonAllYears = 'state_all_years_selection',
+    buttonDBTextColor = 'highlight_DB_text';
+    buttonAllYearsTextColor = 'highlight_AllYears_text';
     slider = 'state_slider';
 
     uiObj.buttonsDBselection = 0;  // pre-selected database 0/1/2
     uiObj.buttonAllYears = 'on';   // show all years on initialisation
     uiObj.slider = 13;             // default slider state (indices corresponidng to years on slider axis)
 
+    uiObj.buttonDBTextColor = [orange02,orange03,orange03];
+    uiObj.buttonAllYearsTextColor = [orange02];
 
 //-- establish UI Buttons
 
@@ -167,13 +171,13 @@ dbSelection.forEach(function(d,i) {
         return dbSelection[i]=1;
     };
 });
-const buttonsDB = setup_buttons(svg,"btnSet1",dims,offsets,dbSelection,labels,btnText,"DB");
+const buttonsDB = setup_buttons(svg,"btnSet1",dims,offsets,dbSelection,labels,btnText,"DB",uiObj.buttonDBTextColor);
 dims = [830,0,20,20,20];
 offsets= [20,40];
 labels= ['OffOn'];
 btnText = ['All Years'];
 dbSelection__tmp= [1];
-var buttonAllYears = setup_buttons(svg,"btnSet2",dims,offsets,dbSelection__tmp,labels,btnText,['All Years]']);
+var buttonAllYears = setup_buttons(svg,"btnSet2",dims,offsets,dbSelection__tmp,labels,btnText,['All Years]'],uiObj.buttonAllYearsTextColor);
 
 
 
@@ -305,16 +309,28 @@ function ready(error, map_db1, map_db2, map_db3, ts_db1, ts_db2, ts_db3, land) {
 
     buttonsDB.on("click",function(d,i) {
         updateButtonColors(d3.select(this), d3.select(this.parentNode));
-        // set correct db name as additional button text (see buttonsDB defintion);
+        // set correct db name as additional button text (see buttonsDB defintion)
+        // and update text color highlighting
+        uiObj.buttonDBTextColor = [orange03,orange03,orange03]; // 1at reset button text colors
         let dbSelection= [0,0,0]; // nullify
         dbSelection.forEach(function(a, j) {
             if(j == i) {
-                return dbSelection[j]=1;
+                    //console.log('......................................... uiObj.buttonDBTextColor[j]',uiObj.buttonDBTextColor[j]);
+                    // set highlight color of selected button/DB
+//                  uiObj.buttonDBTextColor[j]='rgb( 194, 0, 45)';
+                    uiObj.buttonDBTextColor[j]=orange02;
+                    //console.log('......................................... uiObj.buttonDBTextColor[j]',uiObj.buttonDBTextColor[j]);
+                    //console.log('......................................... uiObj.buttonDBTextColor',uiObj.buttonDBTextColor);
+                    return dbSelection[j]=1;
             };
         });
+        // update Reference text field:
         update_button_text_reference(dbSelection,"DB");
 
         uiObj.buttonsDBselection = i; // selects from db 0/1/2
+        // update button text color:
+        updateDBButtonTextColors(uiObj.buttonDBTextColor);
+        // update viz elements:
         update_viz();
     });
     buttonAllYears.on("click",function(d,i) {
@@ -322,9 +338,11 @@ function ready(error, map_db1, map_db2, map_db3, ts_db1, ts_db2, ts_db3, land) {
         //console.log('buttonAllYears.on click: übergebe i an update_data_buttonAllYears:',i);
         //console.log('buttonAllYears.on click: d3.select(this), d3.select(this.parentNode):', // check what click event returns
         //                                      d3.select(this), d3.select(this.parentNode));
-        //console.log('buttonAllYears.on click: returns: selection,showAllYears:',selection,showAllYears);
+        console.log('buttonAllYears.on click: returns: selection,showAllYears:',selection,showAllYears);
 
         uiObj.buttonAllYears = showAllYears;
+        updateAllYearsButtonTextColors();
+        updateSliderUIColors();          // invert color highlighting for silder text & handle dep. on AllYears button state
         update_viz();
     });
 
@@ -365,7 +383,7 @@ function ready(error, map_db1, map_db2, map_db3, ts_db1, ts_db2, ts_db3, land) {
             .attr("transform", "translate("+sliderXPos+","+sliderYPos+")")
 
     sliderYearFirst.append("line")
-            .attr("class", ".v4_slider_track")
+            .attr("class", "v4_slider_track")
 //          .attr("x1", xYearFirst.range()[0])
 //          .attr("x2", xYearFirst.range()[1])
             .attr("x1", idxYearFirst.range()[0])
@@ -382,7 +400,7 @@ function ready(error, map_db1, map_db2, map_db3, ts_db1, ts_db2, ts_db3, land) {
         }));
 
     sliderYearFirst.insert("g", ".track-overlay")
-            .attr("class", ".v4_slider_ticks")
+            .attr("class", "v4_slider_ticks")
             .attr("transform", "translate(0," + 20 + ")")
         .selectAll("text")
         .data(xYearFirst.ticks(10))
@@ -391,9 +409,12 @@ function ready(error, map_db1, map_db2, map_db3, ts_db1, ts_db2, ts_db3, land) {
             .attr("text-anchor", "middle")
             .text(function(d) { return d; });
 
+console.log('.........................slider setup: doe we have x pos of 2011?:',idxYearFirst(14));
+    // position handle in x coord. of initial uiObj.slider state
     var handle1 = sliderYearFirst.insert("circle", ".v4_slider_track-overlay")
             .attr("class", "v4_slider_handle")
-            .attr("cx",0)
+//            .attr("cx",0)
+            .attr("cx",idxYearFirst(uiObj.slider))
             .attr("r", 7);
 
 
@@ -841,7 +862,7 @@ function setup_slider_dyn_text(mapID,nEruptions) {
             d3.select("#textSliderDynToggle").text(nEruptions);
 };
 // taken from map10 and tidied up:
-function setup_buttons(svg,btnID,dims,offsets,dbSelection,labels,btnText,choseText) {
+function setup_buttons(svg,btnID,dims,offsets,dbSelection,labels,btnText,choseText,textColor) {
 
             // dimensional settings
             const bWidth = 20; //button width
@@ -911,7 +932,7 @@ function setup_buttons(svg,btnID,dims,offsets,dbSelection,labels,btnText,choseTe
 
 
             // add button description
-            additional_button_text(buttonGroups,bWidth,dims,offsets,btnText,choseText);
+            additional_button_text(buttonGroups,bWidth,dims,offsets,btnText,choseText,textColor);
 
 
             if(choseText == "DB") {
@@ -949,7 +970,40 @@ function updateOnOffButtonColors(button){
 
             return [button.select('rect').style("fill", currentColor),showAllYears];
 };
-function additional_button_text(buttons,bWidth,dims,offsets,btnText,choseText) {
+function updateDBButtonTextColors(newColors){
+// macht alle drei rot:
+//d3.select('g#btnSet1').selectAll('#dbDescription').style("fill",'#C2002D')
+// aufgabe ein upgedatetes uiObj.buttonDBTextColor zu übergeben:
+//console.log('_________________________________________uiObj.buttonsDBselection:',uiObj.buttonsDBselection);
+//console.log('_________________________________________newColors:',newColors);
+            d3.select('g#btnSet1').selectAll('#dbDescription')
+                    .attr("fill",function(d,i) {
+                                return newColors[i];
+                    });
+}
+function updateAllYearsButtonTextColors() {
+            if (uiObj.buttonAllYears == 'on') {
+                var newColor = orange02;
+            } else {
+                var newColor = orange03;
+            };
+            d3.select('g#btnSet2').selectAll('#dbDescription')
+                    .attr("fill", newColor);
+}
+function updateSliderUIColors() {
+            if (uiObj.buttonAllYears == 'on') {
+                var newColor = orange03; // alternating to 'updateAllYearsButtonTextColors'
+            } else {
+                var newColor = orange02;
+            };
+            d3.select('g.v4_slider').selectAll('g.v4_slider_ticks').selectAll('text')
+//                  .attr("fill", '#C2002D');
+                    .attr("fill", newColor);
+            d3.select('g.v4_slider').selectAll('circle.v4_slider_handle')
+//                  .style("fill", "#C2002D");   // attr doesn't work here
+                    .style("fill", newColor);
+}
+function additional_button_text(buttons,bWidth,dims,offsets,btnText,choseText,textColor) {
 
             const description1= d3.select('g#btnSet1').append("text")
                     .attr("id","textButtonTitle")
@@ -963,15 +1017,18 @@ function additional_button_text(buttons,bWidth,dims,offsets,btnText,choseText) {
                     .data(btnText, function(d) { return d; }).enter()
                     .append('text')
                     .attr("id","dbDescription")
-                    .attr("x",60)
+                    .attr("x",50)                       // space button text
 //                     .attr("y",20)
                     .attr("y", function(d,i) {
                                 return 15+offsets[i];
                     })
-                    .attr("fill",orange03)
+//-> unicolor                    .attr("fill",orange03)
+                    .attr("fill",function(d,i) {
+                                return textColor[i];
+                    })
                     .attr("font-size",12)
-                    .text(function(d,i) {
-                                return d;
+                        .text(function(d,i) {
+                              return d;
                     });
 
             //pre-define text that the DB radio buttons will toggle
@@ -1062,28 +1119,30 @@ function map_legend_magnitude_size_circles(thisSVG,thisID,thisScale,){
 
     // title
     thisSVG.append("text").attr("class", "legendTitle")
-        .attr("x",44).attr("y",19)
+        .attr("x",28).attr("y",19)
         .attr('fill',orange03).attr("font-size","10px")
         //.text(thisText);
-        .text("Map Legend:");
+        //.text("Map Legend:");
+        .text("Map Circle Diameter:");
 
     thisSVG.append("text").attr("class", "legendTitle")
-        .attr("x",12).attr("y",34)
+        .attr("x",28).attr("y",34)
         .attr('fill',orange03).attr("font-size","10px")
         //.text(thisText);
-        .text("Cumulative Annual Emissions");
+        .text("Cumulative Annual");
 
     thisSVG.append("text").attr("class", "legendTitle")
-        .attr("x",50).attr("y",48)
+        .attr("x",28).attr("y",48)
         .attr('fill',orange03).attr("font-size","10px")
-        .call(subscript_text,"SO", "2"," in [kt]");
+        .call(subscript_text,"SO", "2"," Emissions in [kt]");
 
 }
 function ts_legend_magnitude_size_circles(thisSVG,thisID,thisScale){
 
     const circleRadii_ts = [2000,1000, 100];   // representing magnitudes of t-s, max of db2
 
-    const tsLegYPos = [60,30,6];
+//  const tsLegYPos = [60,30,6];
+    const tsLegYPos = [72,42,18];
 
     // convert radii array into scaled values:
     var dy = [];
@@ -1117,7 +1176,8 @@ function ts_legend_magnitude_size_circles(thisSVG,thisID,thisScale){
     thisSVG.append('g').classed('legenditemsTS', true).attr("transform", "translate("+ts_legend_x_pos+","+ts_legend_y_pos+")");
 
     const tsLegTextXPos = [17,17,17];
-    const tsLegTextYPos = [64,34,8];
+//  const tsLegTextYPos = [64,34,8];
+    const tsLegTextYPos = [76,46,20];
 
     var legText = thisSVG.select('g.legenditemsTS').selectAll('text.legendTextTS')
         .data(circleRadii_ts, function(d) { return d; }).enter()
@@ -1133,18 +1193,23 @@ function ts_legend_magnitude_size_circles(thisSVG,thisID,thisScale){
         .attr("x",13).attr("y",519)
         .attr('fill',orange03).attr("font-size","10px")
         //.text(thisText);
-        .text("Time-Series Legend:");
+        .text("Time-Series Circle");
 
     thisSVG.append("text").attr("class", "legendTitle")
         .attr("x",13).attr("y",534)
         .attr('fill',orange03).attr("font-size","10px")
         //.text(thisText);
-        .text("Per Eruption Emitted");
+        .text("Diameter: Emitted");
 
     thisSVG.append("text").attr("class", "legendTitle")
         .attr("x",13).attr("y",548)
         .attr('fill',orange03).attr("font-size","10px")
         .call(subscript_text,"Mass SO", "2"," in [kt]");
+
+    thisSVG.append("text").attr("class", "legendTitle")
+        .attr("x",13).attr("y",562)
+        .attr('fill',orange03).attr("font-size","10px")
+        .call(subscript_text,"of Each Eruption");
 
 }
 
