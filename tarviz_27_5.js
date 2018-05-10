@@ -142,12 +142,16 @@ var uiObj = new Object(),
     str  = 'ui_settings',
     buttonsDBselection = 'state_DB_selection',
     buttonAllYears = 'state_all_years_selection',
+    buttonDBTextColor = 'highlight_DB_text';
+    buttonAllYearsTextColor = 'highlight_AllYears_text';
     slider = 'state_slider';
 
     uiObj.buttonsDBselection = 0;  // pre-selected database 0/1/2
     uiObj.buttonAllYears = 'on';   // show all years on initialisation
     uiObj.slider = 13;             // default slider state (indices corresponidng to years on slider axis)
 
+    uiObj.buttonDBTextColor = [orange02,orange03,orange03];
+    uiObj.buttonAllYearsTextColor = [orange02];
 
 //-- establish UI Buttons
 
@@ -167,13 +171,13 @@ dbSelection.forEach(function(d,i) {
         return dbSelection[i]=1;
     };
 });
-const buttonsDB = setup_buttons(svg,"btnSet1",dims,offsets,dbSelection,labels,btnText,"DB");
+const buttonsDB = setup_buttons(svg,"btnSet1",dims,offsets,dbSelection,labels,btnText,"DB",uiObj.buttonDBTextColor);
 dims = [830,0,20,20,20];
 offsets= [20,40];
 labels= ['OffOn'];
 btnText = ['All Years'];
 dbSelection__tmp= [1];
-var buttonAllYears = setup_buttons(svg,"btnSet2",dims,offsets,dbSelection__tmp,labels,btnText,['All Years]']);
+var buttonAllYears = setup_buttons(svg,"btnSet2",dims,offsets,dbSelection__tmp,labels,btnText,['All Years]'],uiObj.buttonAllYearsTextColor);
 
 
 
@@ -305,16 +309,28 @@ function ready(error, map_db1, map_db2, map_db3, ts_db1, ts_db2, ts_db3, land) {
 
     buttonsDB.on("click",function(d,i) {
         updateButtonColors(d3.select(this), d3.select(this.parentNode));
-        // set correct db name as additional button text (see buttonsDB defintion);
+        // set correct db name as additional button text (see buttonsDB defintion)
+        // and update text color highlighting
+        uiObj.buttonDBTextColor = [orange03,orange03,orange03]; // 1at reset button text colors
         let dbSelection= [0,0,0]; // nullify
         dbSelection.forEach(function(a, j) {
             if(j == i) {
-                return dbSelection[j]=1;
+                    console.log('......................................... uiObj.buttonDBTextColor[j]',uiObj.buttonDBTextColor[j]);
+                    // set highlight color of selected button/DB
+//                  uiObj.buttonDBTextColor[j]='rgb( 194, 0, 45)';
+                    uiObj.buttonDBTextColor[j]=orange02;
+                    console.log('......................................... uiObj.buttonDBTextColor[j]',uiObj.buttonDBTextColor[j]);
+                    console.log('......................................... uiObj.buttonDBTextColor',uiObj.buttonDBTextColor);
+                    return dbSelection[j]=1;
             };
         });
+        // update Reference text field:
         update_button_text_reference(dbSelection,"DB");
 
         uiObj.buttonsDBselection = i; // selects from db 0/1/2
+        // update button text color:
+        updateDBButtonTextColors(uiObj.buttonDBTextColor);
+        // update viz elements:
         update_viz();
     });
     buttonAllYears.on("click",function(d,i) {
@@ -841,7 +857,7 @@ function setup_slider_dyn_text(mapID,nEruptions) {
             d3.select("#textSliderDynToggle").text(nEruptions);
 };
 // taken from map10 and tidied up:
-function setup_buttons(svg,btnID,dims,offsets,dbSelection,labels,btnText,choseText) {
+function setup_buttons(svg,btnID,dims,offsets,dbSelection,labels,btnText,choseText,textColor) {
 
             // dimensional settings
             const bWidth = 20; //button width
@@ -911,7 +927,7 @@ function setup_buttons(svg,btnID,dims,offsets,dbSelection,labels,btnText,choseTe
 
 
             // add button description
-            additional_button_text(buttonGroups,bWidth,dims,offsets,btnText,choseText);
+            additional_button_text(buttonGroups,bWidth,dims,offsets,btnText,choseText,textColor);
 
 
             if(choseText == "DB") {
@@ -949,7 +965,20 @@ function updateOnOffButtonColors(button){
 
             return [button.select('rect').style("fill", currentColor),showAllYears];
 };
-function additional_button_text(buttons,bWidth,dims,offsets,btnText,choseText) {
+function updateDBButtonTextColors(newColors){
+            // macht alle drei rot:
+            //d3.select('g#btnSet1').selectAll('#dbDescription').style("fill",'#C2002D')
+            // aufgabe ein upgedatetes uiObj.buttonDBTextColor zu übergeben:
+console.log('_________________________________________uiObj.buttonsDBselection:',uiObj.buttonsDBselection);
+console.log('_________________________________________newColors:',newColors);
+            d3.select('g#btnSet1').selectAll('#dbDescription')
+                    .attr("fill",function(d,i) {
+                                return newColors[i];
+                    })
+
+
+}
+function additional_button_text(buttons,bWidth,dims,offsets,btnText,choseText,textColor) {
 
             const description1= d3.select('g#btnSet1').append("text")
                     .attr("id","textButtonTitle")
@@ -963,15 +992,18 @@ function additional_button_text(buttons,bWidth,dims,offsets,btnText,choseText) {
                     .data(btnText, function(d) { return d; }).enter()
                     .append('text')
                     .attr("id","dbDescription")
-                    .attr("x",60)
+                    .attr("x",50)                       // space button text
 //                     .attr("y",20)
                     .attr("y", function(d,i) {
                                 return 15+offsets[i];
                     })
-                    .attr("fill",orange03)
+//-> unicolor                    .attr("fill",orange03)
+                    .attr("fill",function(d,i) {
+                                return textColor[i];
+                    })
                     .attr("font-size",12)
-                    .text(function(d,i) {
-                                return d;
+                        .text(function(d,i) {
+                              return d;
                     });
 
             //pre-define text that the DB radio buttons will toggle
