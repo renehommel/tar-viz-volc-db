@@ -3,8 +3,8 @@
     --sliderXPos:240;
     --sliderYPos:30;
     --svgPadBGColor:#111;
-    --black000 :rgb(0, 0, 0);       /* ensure to avoid blanks between ":" and "rgb..." (JS would run into problems)!! */
-    --gray333  :rgb(51, 51, 51);
+    --black000 :rgb(0, 0, 0);         /* ensure to avoid blanks between ":" and "rgb..." (JS would run into problems)!! */
+    --gray333  :rgb(51, 51, 51);      /* btn_defaultColor */
     --grayccc  :rgb(204, 204, 204);
     --gray111  :rgb(17, 17, 17);
     --gray69   :rgb(105, 105, 105);   /* #696969 aka dimgray */
@@ -121,8 +121,10 @@
 /*    cursor: crosshair; */
 }
 .v4_slider_handle {
-    fill: rgb(231, 189, 114);
-    stroke: #000;
+/*    fill: rgb(231, 189, 114); */
+    fill: var(--gray333);
+/*    stroke: #000; */
+    stroke: var(--gray69);
     stroke-opacity: 0.5;
     stroke-width: 1.25px;
 }

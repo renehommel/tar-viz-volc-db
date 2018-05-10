@@ -171,13 +171,45 @@ dbSelection.forEach(function(d,i) {
         return dbSelection[i]=1;
     };
 });
-const buttonsDB = setup_buttons(svg,"btnSet1",dims,offsets,dbSelection,labels,btnText,"DB",uiObj.buttonDBTextColor);
+const buttonsDB = setup_buttons(svg,"btnSet1",dims,offsets,dbSelection,labels,btnText,"DB",uiObj.buttonDBTextColor); //............'labels' is obsolete now!!
+//[buttonsDB,buttonDBText] = setup_buttons(svg,"btnSet1",dims,offsets,dbSelection,labels,btnText,"DB",uiObj.buttonDBTextColor); //............obsolete
 dims = [830,0,20,20,20];
 offsets= [20,40];
 labels= ['OffOn'];
 btnText = ['All Years'];
 dbSelection__tmp= [1];
 var buttonAllYears = setup_buttons(svg,"btnSet2",dims,offsets,dbSelection__tmp,labels,btnText,['All Years]'],uiObj.buttonAllYearsTextColor);
+//[buttonAllYears,buttonAllYearsText] = setup_buttons(svg,"btnSet2",dims,offsets,dbSelection__tmp,labels,btnText,['All Years]'],uiObj.buttonAllYearsTextColor); //............obsolete
+
+
+function buttonsDBfunction(d,i, child, parent) {
+console.log('_________________________________ buttonsDBfunction:',child);
+
+        updateButtonColors(child, parent);
+        // set correct db name as additional button text (see buttonsDB defintion)
+        // and update text color highlighting
+        uiObj.buttonDBTextColor = [orange03,orange03,orange03]; // 1at reset button text colors
+        let dbSelection= [0,0,0]; // nullify
+        dbSelection.forEach(function(a, j) {
+            if(j == i) {
+                    //console.log('......................................... uiObj.buttonDBTextColor[j]',uiObj.buttonDBTextColor[j]);
+                    // set highlight color of selected button/DB
+//                  uiObj.buttonDBTextColor[j]='rgb( 194, 0, 45)';
+                    uiObj.buttonDBTextColor[j]=orange02;
+                    //console.log('......................................... uiObj.buttonDBTextColor[j]',uiObj.buttonDBTextColor[j]);
+                    //console.log('......................................... uiObj.buttonDBTextColor',uiObj.buttonDBTextColor);
+                    return dbSelection[j]=1;
+            };
+        });
+        // update Reference text field:
+        update_button_text_reference(dbSelection,"DB");
+
+        uiObj.buttonsDBselection = i; // selects from db 0/1/2
+        // update button text color:
+        //updateDBButtonTextColors(uiObj.buttonDBTextColor);   .................obsolete with new grouping?
+}
+
+
 
 
 
@@ -306,7 +338,12 @@ function ready(error, map_db1, map_db2, map_db3, ts_db1, ts_db2, ts_db3, land) {
 
 
     //---------------- DATA BINDING TO BUTTON EVENTS ----------------------------------------------------------
-
+/*
+    buttonDBText.on("click",function(d,i) {
+        buttonsDBfunction(d,i,d3.select(this), d3.select(this.parentNode));
+        update_viz();
+    });
+*/
     buttonsDB.on("click",function(d,i) {
         updateButtonColors(d3.select(this), d3.select(this.parentNode));
         // set correct db name as additional button text (see buttonsDB defintion)
@@ -836,7 +873,7 @@ function setup_slider_title(thisSVG,mapID,yearArr,iniVal) {
 
 //outdated            return addSlider;
 };
-function slider_axis_scale(svg,yearArr) {
+function slider_axis_scale(svg,yearArr) { //..............................................................obsolete ??????
 
 //v3:            const slider_scale = d3.scale.ordinal()
 //            const slider_scale = d3.scaleOrdinal()
@@ -872,7 +909,7 @@ function setup_buttons(svg,btnID,dims,offsets,dbSelection,labels,btnText,choseTe
             //fontawesome button labels possible
 
 
-            //container for all buttons
+            //container for all buttons and descriptor
             const allButtons= svg.append("g")
                     .attr("id",btnID)
                     .attr("transform", "translate("+dims[0]+","+dims[1]+")");
@@ -880,7 +917,8 @@ function setup_buttons(svg,btnID,dims,offsets,dbSelection,labels,btnText,choseTe
 
             //groups for each button (holding a rect and text)
             const buttonGroups= allButtons.selectAll("g.button")
-                    .data(labels)
+//                    .data(labels)
+                    .data(btnText)
                     .enter()
                     .append("g")
                     .attr("class",function(d,i) {
@@ -893,10 +931,16 @@ function setup_buttons(svg,btnID,dims,offsets,dbSelection,labels,btnText,choseTe
                     })
                     .style("cursor","pointer")
                     .on("mouseover", function() {
+                        console.log('______________-im in',d3.select(this))
                         if (d3.select(this).select("rect").attr("fill") != btn_pressedColor) {
                                 d3.select(this)
                                     .select("rect")
                                     .attr("fill",btn_hoverColor);
+                        }
+                        if (d3.select(this).select("text").attr("fill") != btn_pressedColor) {
+                                d3.select(this)
+                                    .select("text")
+                                    .attr("fill",btn_hoverColor)
                         }
                     })
                     .on("mouseout", function(d,i) {
@@ -906,10 +950,15 @@ function setup_buttons(svg,btnID,dims,offsets,dbSelection,labels,btnText,choseTe
                                     .select("rect")
                                     .attr("fill",btn_defaultColor);
                         }
-                    })
+                        if (d3.select(this).select("text").attr("fill") != btn_pressedColor) {
+                                d3.select(this)
+                                    .select("text")
+                                    .attr("fill",orange03)
+                        }
+                    });
 
 
-            //adding a rect to each toggle button group
+            // draw button: adding rect to each toggle button group
             //rx and ry give the rect rounded corner
             buttonGroups.append("rect")
                     .attr("class","buttonRect")
@@ -925,15 +974,41 @@ function setup_buttons(svg,btnID,dims,offsets,dbSelection,labels,btnText,choseTe
                     .attr("stroke",gray69)
                     .attr("stroke-width","1");
 
+            // add descriptor for each button
+            buttonGroups.append('text')
+                    //.data(btnText, function(d) { return d; }).enter()
+                    //.append('text')
+                    .attr("id","dbDescription")
+                    .attr("x",50)                       // space button text
+//                     .attr("y",20)
+                    .attr("y", function(d,i) {
+                                return 15+offsets[i];
+                    })
+//-> unicolor
+                    .attr("fill",orange03)
+/*
+                    .attr("fill",function(d,i) { .................... obsolete, <27_6
+                                return textColor[i];
+                    })
+*/
+                    .attr("font-size",12)
+                        .text(function(d,i) {
+                              return d;
+                    });
+
+
+//------------
+            // add button description
+//->            var buttonTextGroup =
+            additional_button_text(buttonGroups,dims,choseText);
+
+
 
             // highlight preselection with correct button shade (btnSet1 only):
             const defaultButton = allButtons.selectAll("g.button.default").select("rect");
             defaultButton.attr("fill",btn_pressedColor);
 
-
-            // add button description
-            additional_button_text(buttonGroups,bWidth,dims,offsets,btnText,choseText,textColor);
-
+            allButtons.selectAll("g.button.default").select("text#dbDescription").attr("fill",btn_pressedColor);
 
             if(choseText == "DB") {
                     const ypos = 170;
@@ -946,11 +1021,52 @@ function setup_buttons(svg,btnID,dims,offsets,dbSelection,labels,btnText,choseTe
                             .attr("font-size",12)
                             .text("Reference:");
 
-                update_button_text_reference(dbSelection,choseText);
+                    update_button_text_reference(dbSelection,choseText);
             };
 
             return buttonGroups;
-};
+}
+function additional_button_text(buttons,dims,choseText) {
+
+            const description1= d3.select('g#btnSet1').append("text")
+                    .attr("id","textButtonTitle")
+                    .attr("x",14)
+                    .attr("y",0)
+                    .attr("fill",orange03)
+                    .attr("font-size",14)
+                    .text("Choose Dataset");
+
+            //pre-define text the DB radio buttons will toggle (i.e. DB's references)
+            if(choseText == "DB") {
+                const ypos = 170;
+                const number = d3.select('g#btnSet1').append("text")
+                    .attr("id","textRefToggle")
+                    .attr("x",20)
+                    .attr("y",ypos+dims[3])
+                    .attr("fill",orange03)
+                    .attr("font-size",12)
+                    .text("[click a button]") // <--- just inital something
+            }
+}
+function update_button_text_reference(dbSelection,choseText) {
+
+            // does this still has any purpose?
+            if(choseText == "DB") {
+                    dbRefs.forEach(function(d,i) {
+                        //console.log('update_button_text_reference: dbRefs: d,i: ',d,i);
+                        //console.log('update_button_text_reference: dbRefs: dbSelection[i]: ',dbSelection[i]);
+                        if (dbSelection[i] == 1)  addText = d;
+                    });
+            } else {
+                throw '- Error update_button_text_reference -';
+            };
+
+            console.log('update_button_text_reference: dbSelection,thisText:',dbSelection,choseText);
+            console.log('update_button_text_reference: addText:',addText);
+
+            // update reference on button toggle (also set default):
+            const refText2= d3.select("#textRefToggle").text(addText)
+}
 function updateButtonColors(button, parent) {
             parent.selectAll("rect")
                     .attr("fill",btn_defaultColor)
@@ -991,77 +1107,30 @@ function updateAllYearsButtonTextColors() {
                     .attr("fill", newColor);
 }
 function updateSliderUIColors() {
+            // functionality cannot be combined sice handle use btn_defaultColor
+            // tick color: alternating to 'updateAllYearsButtonTextColors'
             if (uiObj.buttonAllYears == 'on') {
-                var newColor = orange03; // alternating to 'updateAllYearsButtonTextColors'
+                var newColor = orange03;
+                d3.select('g.v4_slider').selectAll('g.v4_slider_ticks').selectAll('text')
+                            .attr("fill", orange03);
+                d3.select('g.v4_slider').selectAll('circle.v4_slider_handle')
+//                          .style("fill", "#C2002D");   // attr doesn't work here
+                            .style("fill", btn_defaultColor);
             } else {
                 var newColor = orange02;
+                d3.select('g.v4_slider').selectAll('g.v4_slider_ticks').selectAll('text')
+                            .attr("fill", orange02);
+                d3.select('g.v4_slider').selectAll('circle.v4_slider_handle')
+//                          .style("fill", "#C2002D");   // attr doesn't work here
+                            .style("fill", orange02);
             };
-            d3.select('g.v4_slider').selectAll('g.v4_slider_ticks').selectAll('text')
+//            d3.select('g.v4_slider').selectAll('g.v4_slider_ticks').selectAll('text')
 //                  .attr("fill", '#C2002D');
-                    .attr("fill", newColor);
-            d3.select('g.v4_slider').selectAll('circle.v4_slider_handle')
+//                    .attr("fill", newColor);
+//            d3.select('g.v4_slider').selectAll('circle.v4_slider_handle')
 //                  .style("fill", "#C2002D");   // attr doesn't work here
-                    .style("fill", newColor);
+//                    .style("fill", newColor);
 }
-function additional_button_text(buttons,bWidth,dims,offsets,btnText,choseText,textColor) {
-
-            const description1= d3.select('g#btnSet1').append("text")
-                    .attr("id","textButtonTitle")
-                    .attr("x",14)
-                    .attr("y",0)
-                    .attr("fill",orange03)
-                    .attr("font-size",14)
-                    .text("Choose Dataset");
-
-            const description2= buttons.select('g#btnSet1')
-                    .data(btnText, function(d) { return d; }).enter()
-                    .append('text')
-                    .attr("id","dbDescription")
-                    .attr("x",50)                       // space button text
-//                     .attr("y",20)
-                    .attr("y", function(d,i) {
-                                return 15+offsets[i];
-                    })
-//-> unicolor                    .attr("fill",orange03)
-                    .attr("fill",function(d,i) {
-                                return textColor[i];
-                    })
-                    .attr("font-size",12)
-                        .text(function(d,i) {
-                              return d;
-                    });
-
-            //pre-define text that the DB radio buttons will toggle
-            if(choseText == "DB") {
-                const ypos = 170;
-                const number = d3.select('g#btnSet1').append("text")
-                    .attr("id","textRefToggle")
-                    .attr("x",20)
-                    .attr("y",ypos+dims[3])
-                    .attr("fill",orange03)
-                    .attr("font-size",12)
-                    .text("[click a button]") // <--- just inital something
-            }
-};
-function update_button_text_reference(dbSelection,choseText) {
-
-            // does this still has any purpose?
-            if(choseText == "DB") {
-                    dbRefs.forEach(function(d,i) {
-                        //console.log('update_button_text_reference: dbRefs: d,i: ',d,i);
-                        //console.log('update_button_text_reference: dbRefs: dbSelection[i]: ',dbSelection[i]);
-                        if (dbSelection[i] == 1)  addText = d;
-                    });
-            } else {
-                throw '- Error update_button_text_reference -';
-            };
-
-            console.log('update_button_text_reference: dbSelection,thisText:',dbSelection,choseText);
-            console.log('update_button_text_reference: addText:',addText);
-
-            // update reference on button toggle (also set default):
-            const refText2= d3.select("#textRefToggle").text(addText)
-};
 
 //-- generalized mapping utilities:
 function map_legend_magnitude_size_circles(thisSVG,thisID,thisScale,){
