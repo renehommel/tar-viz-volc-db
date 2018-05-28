@@ -4,7 +4,7 @@ Interactive visualisation of volcanic datasets provided for TAR experiments of t
 Details of data set and purpose of visualisation are described here:
 http://www.env.earth/TAR
 
-Schreenshot:
+Screenshot:
 ![screenshot](screenshots/snapshot_may18.jpg "Visualisation UI as of 20 May 2018")
 
 Contact: rene.hommel@web.de
