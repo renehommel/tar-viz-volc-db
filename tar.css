@@ -1,0 +1,265 @@
+:root {
+    --sliderWidth:550;
+    --sliderXPos:240;
+    --sliderYPos:30;
+    --svgPadBGColor:#111;
+    --black000 :rgb(0, 0, 0);         /* ensure to avoid blanks between ":" and "rgb..." (JS would run into problems)!! */
+    --gray333  :rgb(51, 51, 51);      /* btn_defaultColor */
+    --grayccc  :rgb(204, 204, 204);
+    --gray111  :rgb(17, 17, 17);
+    --gray69   :rgb(105, 105, 105);   /* #696969 aka dimgray */
+    --brown01  :rgb(104, 90, 92);     /* #685a5c */
+    --orange01 :rgb(217, 137, 97);    /* #d98961 */
+    --orange02 :rgb(231, 189, 114);   /* #e7bd72 */
+/*    --orange03 :rgb(162, 113, 45);  */ /* #ECB362 */
+    --orange03 :rgb(157, 131, 96);   /* #ECB362 */
+}
+.content-section-bright {
+    padding: 50px 0;
+    border-top: 1px solid #e7e7e7;
+    border-bottom: 1px solid #e7e7e7;
+    background-color: #ffffff;
+    text-align: center;
+}
+.tar-description-item {
+  text-align:left;
+  font-size: 1em;
+}
+
+.tar-viz-row {
+/*  background-color: #B6D1EC; cannot be used because width > layout width */
+  margin-left: 0px;           /* overwrites bootstraps row margin -15px on both sides */
+  margin-bottom: 30px;
+/*  border:2px dashed #000;  */
+  display: block;
+  margin:auto;
+  text-align:center;
+  font-family: Helvetica,Arial,sans-serif;
+}
+
+
+.tar-explanation-item {
+  text-align:left;
+  font-size: 0.8em;
+}
+.tar-explanation-item > h5 {
+  text-align:left;
+  font-size: 0.9em;
+}
+
+
+#svgTAR {
+  position: relative;
+/*  background-color: #111; */     /* rgb(17, 17, 17) */
+  /*cursor: pointer;*/
+  /* make it responsive: */
+  /* width:100%; */
+  height: auto;
+/*
+  display: block;
+  margin:auto;
+*/
+  font-family:Helvetica,Arial,sans-serif;
+}
+
+.svg-pad {
+    background-color: var(--svgPadBGColor);   /* #111 */
+}
+
+.copyright {
+    text-align: left;
+}
+
+.land {
+    fill: #333;                /* rgb(51, 51, 51) */
+    stroke: #555;
+    stroke-width: 1;
+}
+.volcano_map, .volcano_ts {
+    fill-opacity: 0.6;
+}
+/*.legendLinear text.label { */
+/*
+.legendSize text {
+    fill:#696969;
+}
+
+*/
+.legendCell {
+    fill-opacity: 0.6;
+}
+
+/* new slider d3 v4 native */
+.v4_slider {
+    fill: var(--orange03);
+/*    stroke: none; */
+    font-weight:100;
+    font-size:11px;
+    letter-spacing:1px;
+    width:var(--sliderWidth);
+}
+.v4_slider_track,
+.v4_slider_track-inset,
+.v4_slider_track-overlay {
+    stroke-linecap: round;
+}
+.v4_slider_track {
+    stroke: #fff;
+/*    stroke-opacity: 0.3; */
+    stroke-width: 4px;
+}
+.v4_slider_track-inset {
+/*    stroke: #ddd; */
+/*      stroke: var(--orange03);  */
+      stroke: var(--svgPadBGColor);
+      stroke-width: 3px;
+}
+.v4_slider_track-overlay {
+    pointer-events: stroke;
+    stroke-width: 50px;
+    stroke: transparent;
+/*    cursor: crosshair; */
+}
+.v4_slider_handle {
+/*    fill: rgb(231, 189, 114); */
+    fill: var(--gray333);
+/*    stroke: #000; */
+    stroke: var(--gray69);
+    stroke-opacity: 0.5;
+    stroke-width: 1.25px;
+}
+/*
+.v4_slider_ticks {
+    fill: var(--orange03);
+    color: var(--orange03);
+}
+.v4_slider_ticks > text {
+    fill: var(--orange03);
+    color: var(--orange03);
+}
+*/
+
+
+
+
+.slider_axis {
+  float:left;
+}
+.slider_axis text {
+  font: 12px sans-serif;
+  fill:#e7bd72;    /* my modif (color: not working), stroke makes bold text */
+  float:left;
+}
+.slider_axis path,
+.slider_axis line {
+  fill: none;
+/*  stroke: #000; */
+  stroke: #e7bd72;     /* my modif */
+  shape-rendering: crispEdges;
+}
+.slider_axis path {
+  display: none;
+}
+
+#slider_input {
+  position: absolute;
+  left: 240px;
+/*  top: 30px;      stand alone version during development */
+  top: 20px;
+/*  width: 300px; */
+  width: 564px;
+  color:#e7bd72;
+
+}
+/*#slider_label, #slider_label_date{*/
+#slider_title, #slider_title_dyn_part{
+   font: 15px sans-serif;
+   color:#e7bd72;
+}
+/*#slider_label {*/
+#slider_title{             /*......................................now obsolete, directly positioned */
+  position: absolute;
+/*  left: 635px; */
+/*  top: 15px;      stand alone version during development */
+  top: 455px;
+/* if left-aligned */
+  left: 456px;
+/* if right-aligned
+  left: 510px;
+*/
+}
+#slider_title_dyn_part {             /*......................................now obsolete */
+  position: absolute;
+/*  top: 15px;      stand alone version during development */
+  top: 455px;
+/* if left-aligned
+  left: 470px;
+ */
+/* if right-aligned */
+  left: 610px;
+}
+/* my formatting */
+#slider_axis_formatting {
+    color:#e7bd72;  /* orange02          ..........:NOT USED  */
+}
+
+
+.xaxis path,.xaxis line,
+.yaxis path,.yaxis line {
+  fill: none;
+  stroke: var(--orange03);
+  shape-rendering: crispEdges;
+}
+.xaxis text,.yaxis text {
+    /* "fill:none;fill-opacity:1;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;" */
+    fill: var(--orange03);
+    stroke: none;
+    font-weight:100;
+    font-size:11px;
+    letter-spacing:1px;
+}
+#map-title{
+    fill: var(--orange03);
+    font-size:13px;
+    stroke: none;
+    letter-spacing:2px;
+}
+#ts-title {
+    fill: var(--orange03);
+    font-size:13px;
+    stroke: none;
+    letter-spacing:2px;
+}
+#ts-y-label {
+    fill: var(--orange03);
+    font-size:9px;
+    stroke: none;
+    letter-spacing:2px;
+}
+//*
+@media(min-width:2000px)  {
+}
+@media(min-width:1400px)  {
+}
+*/
+@media(max-width:991px)  {
+}
+@media(max-width:767px)  {
+  .content-section-bright {
+    padding: 25px 0 15px 0;
+  }
+  .content-section-bright .section-heading {
+    margin-bottom: 15px;
+  }
+  .tar-description-item {
+    font-size: 0.8em;
+  }
+}
+@media(max-width:690px)  {
+}
+@media(max-width:580px)  {
+}
+@media(max-width:476px)  {
+}
+@media(max-width:380px)  {
+}
