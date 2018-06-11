@@ -216,13 +216,13 @@ console.log('_________________________________ buttonsDBfunction:',child);
 
 //- - Run viz, incl. importing data: - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - *
 queue()
-    .defer(d3.csv, "db1_2002-2012.csv")    // anual accumulations per volcanoe for mapping
-    .defer(d3.csv, "db2_1998-2012.csv")
-    .defer(d3.csv, "db3_1998-2012.csv")
-    .defer(d3.csv, "db1_1998-2012_ts.csv") // time-series as given in data sets - no accumulation over time - not intended for mapping!!
-    .defer(d3.csv, "db2_1998-2012_ts.csv")
-    .defer(d3.csv, "db3_1998-2012_ts.csv")
-    .defer(d3.json, "land.geojson")
+    .defer(d3.csv, "data/db1_2002-2012.csv")    // anual accumulations per volcanoe for mapping
+    .defer(d3.csv, "data/db2_1998-2012.csv")
+    .defer(d3.csv, "data/db3_1998-2012.csv")
+    .defer(d3.csv, "data/db1_1998-2012_ts.csv") // time-series as given in data sets - no accumulation over time - not intended for mapping!!
+    .defer(d3.csv, "data/db2_1998-2012_ts.csv")
+    .defer(d3.csv, "data/db3_1998-2012_ts.csv")
+    .defer(d3.json,"data/land.geojson")
     .await(ready);
 
 
