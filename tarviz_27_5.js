@@ -118,21 +118,17 @@ svg.append('foreignObject').attr("width", 700).attr("height", 30)
 
 // specific svg elements:
 // Create and configure a geographic projection
-//v3: var projection = d3.geo.equirectangular()
 var projection = d3.geoEquirectangular()
     // optionally scale, set padding:
     .scale(width/8)
     .translate([width / 2+50, height / 2+20]);
 
 // Create and configure a path generator
-//v3: var pathGenerator = d3.geo.path()
 var pathGenerator = d3.geoPath()
     .projection(projection);
 
 
 //- -  Parse date information from DB's
-//v3: var parseDate = d3.time.format("%e %b %Y").parse;
-//v3: var parseYear = d3.time.format("%Y");
 var parseDate = d3.timeParse("%e %b %Y");
 var parseYear = d3.timeFormat("%Y");
 
@@ -208,10 +204,6 @@ console.log('_________________________________ buttonsDBfunction:',child);
         // update button text color:
         //updateDBButtonTextColors(uiObj.buttonDBTextColor);   .................obsolete with new grouping?
 }
-
-
-
-
 
 
 //- - Run viz, incl. importing data: - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - *
@@ -354,7 +346,6 @@ function ready(error, map_db1, map_db2, map_db3, ts_db1, ts_db2, ts_db3, land) {
             if(j == i) {
                     //console.log('......................................... uiObj.buttonDBTextColor[j]',uiObj.buttonDBTextColor[j]);
                     // set highlight color of selected button/DB
-//                  uiObj.buttonDBTextColor[j]='rgb( 194, 0, 45)';
                     uiObj.buttonDBTextColor[j]=orange02;
                     //console.log('......................................... uiObj.buttonDBTextColor[j]',uiObj.buttonDBTextColor[j]);
                     //console.log('......................................... uiObj.buttonDBTextColor',uiObj.buttonDBTextColor);
@@ -384,19 +375,11 @@ function ready(error, map_db1, map_db2, map_db3, ts_db1, ts_db2, ts_db3, land) {
     });
 
     //---------------- DEFINE SLIDER AND DATA BINDING TO SLIDER EVENTS ----------------
-    // before setting up plot, setup slider (requires dataObj to be known)
-//outdated    const slider = setup_slider(svg,"#svgTAR",dataObj.unique_years_of_selected_db,uiObj.slider);
-//outdated    const setup_slider_axis = slider_axis_scale(svg,dataObj.unique_years_of_selected_db);
-    //receive slider's initial value (which must be 0):
-//outdated    const ini_current = document.getElementById('slider_input').value;
-//outdated    const slider_ini_value = [ini_current];
-
     // since 27_4 only set slider title
     setup_slider_title(svg,"#svgTAR",dataObj.unique_years_of_selected_db,uiObj.slider);
 
     // tarviz_27+: d3v4 'native' slider:
     var new_sliders_year_sel = -99; // initial
-//  var sliderWidth = 500;
     // access CSS variables
     const sliderWidth = style.getPropertyValue('--sliderWidth');
     const sliderXPos  = style.getPropertyValue('--sliderXPos');
@@ -416,13 +399,10 @@ function ready(error, map_db1, map_db2, map_db3, ts_db1, ts_db2, ts_db3, land) {
 
     var sliderYearFirst = svg.append("g")
             .attr("class", "v4_slider")
-//          .attr("transform", "translate(100,400)");
             .attr("transform", "translate("+sliderXPos+","+sliderYPos+")")
 
     sliderYearFirst.append("line")
             .attr("class", "v4_slider_track")
-//          .attr("x1", xYearFirst.range()[0])
-//          .attr("x2", xYearFirst.range()[1])
             .attr("x1", idxYearFirst.range()[0])
             .attr("x2", idxYearFirst.range()[1])
         .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
@@ -432,7 +412,6 @@ function ready(error, map_db1, map_db2, map_db3, ts_db1, ts_db2, ts_db3, land) {
         .call(d3.drag()
         .on("start.interrupt", function() { sliderYearFirst.interrupt(); })
         .on("start drag", function() {
-//            setHandle1(xYearFirst.invert(d3.event.x));
               setHandle1(idxYearFirst.invert(d3.event.x));
         }));
 
@@ -450,7 +429,6 @@ console.log('.........................slider setup: doe we have x pos of 2011?:'
     // position handle in x coord. of initial uiObj.slider state
     var handle1 = sliderYearFirst.insert("circle", ".v4_slider_track-overlay")
             .attr("class", "v4_slider_handle")
-//            .attr("cx",0)
             .attr("cx",idxYearFirst(uiObj.slider))
             .attr("r", 7);
 
@@ -473,54 +451,15 @@ console.log('.........................slider setup: doe we have x pos of 2011?:'
         uiObj.slider = new_sliders_year_sel;
         update_viz();
     }
-//obsolete: function getHandleCx() {
-//obsolete:     console.log('...................getHandleCx: handle1.attr("cx"): ',handle1.attr("cx"));    // ..... nicht benötigt ?????????
-//obsolete:     return [handle1.attr("cx")];
-//obsolete: }
-//obsolete: function getRangeText() {
-//obsolete: // translates position (function setHandle1) into year of time period
-//obsolete: //orig:    var valA = xYearFirst.invert(handle1.attr("cx"));                                      //  gibt das jahr selektiert im slider zurück
-//obsolete:     var valA = idxYearFirst.invert(handle1.attr("cx"));                                      //  gibt das jahr selektiert im slider zurück
-//obsolete:     console.log('___________________getRangeText: valA: ',valA);
-//obsolete:     return valA;
-//obsolete: }
 
-
-//-------------------------------------------------------------------------------------------------------------------------------
-
+//------------------------------------------------------------------------------------------------------
 
     // initiate initial data binding
     update_viz();
 
     console.log('ready: initial drawing finshed ----------------------------------------------------');
 
-
-//--- old position of data binding to button & slider events: .............. REMOVE
-//
-    //var h = xYearFirst.invert(d3.event.x);
-//    sliderYearFirst.call(d3.drag()
-//        .on("start drag", function() { setHandle1(xYearFirst.invert(d3.event.x)); }));
-
-    //handle1.attr("cx", xYearFirst(Math.round(h)));
-    //var value_slider = xYearFirst.invert(handle1.attr("cx"));
-    //console.log('                                data binding: value_slider: ',value_slider);
-    //uiObj.slider = value_slider;
-    //update_viz();
-
-
-
-//outdated    slider.on("change", function(){
-//outdated        // receive current slider value (index) when moved:
-//outdated        var current_idx = this.value;
-//outdated
-//outdated
-//outdated        // + + new method controlling UI object:
-//outdated        uiObj.slider = current_idx;
-//outdated        update_viz();
-//outdated    });
-
-
-    //-----------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------
 
 
     function update_viz() {
@@ -592,7 +531,6 @@ console.log('.........................slider setup: doe we have x pos of 2011?:'
         //console.log('update_viz: empty year in time-sliced dataset (ts) ?:',noData_ts);
         if (!noData_map && !noData_ts) {
             var spec_colors = draw_map01(data_map, land, svg, allMax_map);   // updating map plot
-//      else if () {
         } else {
             //
             console.log('update_viz: year without data in selected db ',dataObj.name_of_selected_db);
@@ -628,7 +566,6 @@ const draw_map01 = (volcano, land, svg, allMax) => {
     // scale incoming data:
     //
     // Radius scale
-//v3:    var rScale = d3.scale.sqrt()
     var rScale = d3.scaleSqrt()
         //non-unified (i.e. individual db's) scaling of magnitude
         .domain(d3.extent(thisVolc, function(d) {
@@ -638,7 +575,6 @@ const draw_map01 = (volcano, land, svg, allMax) => {
         .range([1, 60]);
 
     // Color scale/marker
-//v3:    var colorScale = d3.scale.ordinal()
     var colorScale = d3.scaleOrdinal()
         .domain(d3.extent(thisVolc, function(d) {
                 return d.Volcano; }))
@@ -646,11 +582,8 @@ const draw_map01 = (volcano, land, svg, allMax) => {
 
 
     // draw land path 1st
-//v3:    var land = svg.select('g.map').selectAll('path.land').data([land]);
     var land = svg.select('g.map').append('path').classed('land', true).data([land]);
 
-//v3:    land.enter().append('path').classed('land', true);
-//v3:    land.enter().classed('land', true);
     land.enter();
     land.attr('d', pathGenerator);
     land.exit().remove();
@@ -658,7 +591,6 @@ const draw_map01 = (volcano, land, svg, allMax) => {
 
     // bind first data
     var theData = thisVolc;
-
 
     var circles = svg.select('g.dots').selectAll('circle.volcano_map').data(theData);
 
@@ -683,16 +615,6 @@ const draw_map01 = (volcano, land, svg, allMax) => {
     var legExists = document.getElementById('unifiedMapLegend')
 
 
-    // map title
-/*
-    const map_title= d3.select('g.map').append("text")
-            .attr("id","map-title")
-            .attr("x",0)
-            .attr("y",0)
-            .attr("transform", "translate("+map_title_x_pos+","+map_title_y_pos+")")
-            .text("Global Distribution of Volcanic Eruptions");
-*/
-
     console.log('draw_map01: drawing finshed -----------------------------------');
     return colorScale;
 }; // const draw_map01
@@ -708,8 +630,6 @@ const draw_ts = (volcano, thisYear, colors, allMax) => {
     let tsVolc = Object.values(volcano);
 
 
-//v3:    const x = d3.time.scale(),
-//v3:          y = d3.scale.linear(),
     const x = d3.scaleTime(),
           y = d3.scaleLinear(),
           x_label = "X", y_label = "Y";
@@ -740,19 +660,16 @@ const draw_ts = (volcano, thisYear, colors, allMax) => {
         const mindate = new Date(1998,0,1),
               maxdate = new Date(2012,11,31);
         x.domain([mindate, maxdate]);
-//v3:        x_axis.call(d3.svg.axis().scale(x).orient("bottom").ticks(15));
         x_axis.call(d3.axisBottom(x).ticks(15));
     } else {
         const mindate = new Date(thisYear,0,1),
               maxdate = new Date(thisYear,11,31);
         x.domain([mindate, maxdate]);
-//v3:        x_axis.call(d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.time.format("%B")));
         x_axis.call(d3.axisBottom(x).tickFormat(d3.timeFormat("%B")));
     }
 
     y.range([ts_height, 0]);
     y.domain([0, 25]);
-//v3:    y_axis.call(d3.svg.axis().scale(y).orient("left").ticks(6));
     y_axis.call(d3.axisLeft(y).ticks(6));
 
     // now rotate text on x axis
@@ -781,7 +698,6 @@ const draw_ts = (volcano, thisYear, colors, allMax) => {
     });
 
     // Radius scale
-//v3:    var rScale = d3.scale.sqrt()
     var rScale = d3.scaleSqrt()
         .domain([0, allMax])
         .range([1, 10]);
@@ -808,15 +724,6 @@ const draw_ts = (volcano, thisYear, colors, allMax) => {
 
     ts_circles.exit().remove();
 
-    // time series title
-/*
-    const ts_title= d3.select('g.ts').append("text")
-            .attr("id","ts-title")
-            .attr("x",0)
-            .attr("y",0)
-            .attr("transform", "translate("+ts_title_x_pos+","+ts_title_y_pos+")")
-            .text("Corresponding Time-Series and Maximum Injection Altitudes");
-*/
     // axis labels
     d3.select('g.ts').append("text")
             .attr("id","ts-y-label")
@@ -841,19 +748,7 @@ function get_time(obj) {
 
 
 //-- complementary functions - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - * - *
-//outdated function setup_slider(thisSVG,mapID,yearArr,iniVal) {
 function setup_slider_title(thisSVG,mapID,yearArr,iniVal) {
-
-//outdated            const addSlider = d3.select(mapID).append("input")
-//outdated                    .attr("id", "slider_input")
-//outdated                    .attr("class", "slider_input_volc")
-//outdated                    .attr("type", "range")
-//outdated                    .attr("min", 0)
-//outdated                    .attr("max", yearArr.length-1)
-//outdated                    .attr("step", 1)
-//outdated                    .attr("value", iniVal)
-//outdated                    .attr("transform", "translate(0,0)");
-
 
             const slider_static_title = svg.append("g")
                     .attr("class", "slider_title")
@@ -870,22 +765,12 @@ function setup_slider_title(thisSVG,mapID,yearArr,iniVal) {
                     .attr("font-size",14)
                     .attr("fill",orange03)
                     .text("[numberEruptions]")
-
-//outdated            return addSlider;
 };
 function slider_axis_scale(svg,yearArr) { //..............................................................obsolete ??????
 
-//v3:            const slider_scale = d3.scale.ordinal()
-//            const slider_scale = d3.scaleOrdinal()
-//                    .domain(yearArr)
-//v3:                    .rangeRoundBands([0, 600], .1);
             const slider_scale = d3.scaleBand()
                     .domain(yearArr)
                     .range([0, 600], .1);
-
-//v3:            const slider_axis = d3.svg.axis()
-//v3:                    .scale(slider_scale)
-//v3:                    .orient("bottom");
 
             const slider_axis = d3.axisBottom(slider_scale);
 
@@ -917,7 +802,6 @@ function setup_buttons(svg,btnID,dims,offsets,dbSelection,labels,btnText,choseTe
 
             //groups for each button (holding a rect and text)
             const buttonGroups= allButtons.selectAll("g.button")
-//                    .data(labels)
                     .data(btnText)
                     .enter()
                     .append("g")
@@ -986,11 +870,6 @@ function setup_buttons(svg,btnID,dims,offsets,dbSelection,labels,btnText,choseTe
                     })
 //-> unicolor
                     .attr("fill",orange03)
-/*
-                    .attr("fill",function(d,i) { .................... obsolete, <27_6
-                                return textColor[i];
-                    })
-*/
                     .attr("font-size",12)
                         .text(function(d,i) {
                               return d;
@@ -1124,12 +1003,6 @@ function updateSliderUIColors() {
 //                          .style("fill", "#C2002D");   // attr doesn't work here
                             .style("fill", orange02);
             };
-//            d3.select('g.v4_slider').selectAll('g.v4_slider_ticks').selectAll('text')
-//                  .attr("fill", '#C2002D');
-//                    .attr("fill", newColor);
-//            d3.select('g.v4_slider').selectAll('circle.v4_slider_handle')
-//                  .style("fill", "#C2002D");   // attr doesn't work here
-//                    .style("fill", newColor);
 }
 
 //-- generalized mapping utilities:
